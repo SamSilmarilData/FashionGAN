@@ -118,7 +118,7 @@ def training_loop(
     allow_tf32              = False,    # Enable torch.backends.cuda.matmul.allow_tf32 and torch.backends.cudnn.allow_tf32?
     abort_fn                = None,     # Callback function for determining whether to abort training. Must return consistent results across ranks.
     progress_fn             = None,     # Callback function for updating training progress. Called for all ranks.
-    ocal_rank               = 0,        # Local rank of the current process in [0, local_gpus[.
+    local_rank              = 0,        # Local rank of the current process in [0, local_gpus[.
     global_rank             = 0,        # Global rank of the current process in [0, global_gpus[.
     local_gpus              = 1,        # Number of GPUs per machine.
     global_gpus             = 1,        # Number of GPUs across machines.
