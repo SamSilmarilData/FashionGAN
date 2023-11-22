@@ -549,7 +549,7 @@ def main(ctx, outdir, dry_run, **config_kwargs):
     num_nodes = 2
     with tempfile.TemporaryDirectory() as temp_dir:
         if args.num_gpus == 1:
-            subprocess_fn(rank=0, args, temp_dir=temp_dir)
+            subprocess_fn(rank=0, args=args, temp_dir=temp_dir)
         else:
             torch.multiprocessing.spawn(fn=subprocess_fn, args=(args, temp_dir), nprocs=args.num_gpus//num_nodes)
 #----------------------------------------------------------------------------
