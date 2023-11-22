@@ -23,4 +23,4 @@ echo "MASTER_ADDR="$MASTER_ADDR
 source /home/PACE/sm98741n/miniconda3/etc/profile.d/conda.sh
 conda activate venv
 
-srun python /home/PACE/sm98741n/stylegan2-ada-pytorch/trainv1.py --outdir=./training-runs-dist --data=/home/PACE/sm98741n/datasets/1KD512.zip --gpus=4 --batch=16 --kimg=5000
+srun python ../trainv1.py --outdir=./training-runs-dist --data=/home/PACE/sm98741n/datasets/1KD512.zip --gpus=4 --batch=16 --kimg=5000
