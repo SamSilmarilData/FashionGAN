@@ -544,13 +544,14 @@ def main(ctx, outdir, dry_run, **config_kwargs):
     #         subprocess_fn(rank=0, args=args, temp_dir=temp_dir)
     #     else:
     #         torch.multiprocessing.spawn(fn=subprocess_fn, args=(args, temp_dir), nprocs=args.num_gpus)
-    temp_dir = f'os.environ['SCRATCH']'
+    # temp_dir = f'os.environ['SCRATCH']'
 
     num_nodes = 2
-    if args.num_gpus == 1:
-        subprocess_fn(rank=0, args, temp_dir=temp_dir)
-    else:
-        torch.multiprocessing.spawn(fn=subprocess_fn, args=(args, temp_dir), nprocs=args.num_gpus//num_nodes)
+    with tempfile.TemporaryDirectory() as temp_dir:
+        if args.num_gpus == 1:
+            subprocess_fn(rank=0, args, temp_dir=temp_dir)
+        else:
+            torch.multiprocessing.spawn(fn=subprocess_fn, args=(args, temp_dir), nprocs=args.num_gpus//num_nodes)
 #----------------------------------------------------------------------------
 
 if __name__ == "__main__":
