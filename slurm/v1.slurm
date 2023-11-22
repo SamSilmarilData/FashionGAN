@@ -5,7 +5,6 @@
 #SBATCH --output=stylegan2_out.%j
 #SBATCH --error=stylegan2_err.%j
 #SBATCH --time=12:00:00
-#SBATCH --partition={partition_with_gpus}
 #SBATCH --gres=gpu:2
 
 ### change 5-digit MASTER_PORT as you wish, slurm will raise Error if duplicated with others
